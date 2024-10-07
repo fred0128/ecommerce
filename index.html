@@ -14,7 +14,7 @@
         <div class="loader"></div>
     </div>
 
-    <div class="page f-page login hidden">
+    <div class="page f-page login hidden" id="login">
         <div class="f-form">
             <h1>Log In</h1>
             <div class="login-input-box input-box">
@@ -27,11 +27,12 @@
             </div>
             <a class="f-switch-btn-to-signup" href="#">Don't have an account? Sign Up</a>
             <button class="login-btn f-button" type="submit">Log In</button>
+            <a class="f-forgot-pass" href="#" id="forgot-password-link">Forgot password?</a>
             <div id="login-error" class="error-message hidden"></div>
         </div>
     </div>
 
-    <div class="page f-page signup">
+    <div class="page f-page signup" id="signup">
         <form class="signup-form f-form" action="#">
             <h1>Sign Up</h1>
             <div class="login-input-box input-box">
@@ -52,10 +53,27 @@
         </form>
     </div>
 
+    <div id="forgot-pass-div" class="page forgot-pass hidden f-form">
+        <button class="f-pass-exit-btn">
+            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5"
+                fill="none" xmlns="http://www.w3.org/2000/svg" color="#3b742f">
+                <path d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5" stroke="#3b742f" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <h1>Şifrəni Yeniləyin</h1>
+        <div class="login-input-box input-box">
+            <label class="login-label f-label" for="forgot-email">E-mail</label>
+            <input class="f-input" type="email" id="forgot-email">
+        </div>
+        <button class="reset-pass-btn f-button" type="submit">Reset Password</button>
+        <div id="reset-error" class="error-message hidden"></div>
+    </div>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCN3FvQgCWMyM6_AH8NGgTgJ6jDLIfQP6Q",
@@ -67,10 +85,12 @@
             measurementId: "G-2Q0G4FHG5T"
         };
 
+        // Firebase'i başlat
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
         const auth = getAuth(app);
 
+        // İzin verilen domainler
         const allowedDomains = [
             "127.0.0.1",
             "https://fred0128.github.io/",
@@ -80,14 +100,13 @@
 
         if (!allowedDomains.includes(currentDomain)) {
             window.location.href = "assets/pages/unauthorized.html";
-        }
-
-        else {
-            console.log("domain autorized!")
+        } else {
+            console.log("domain authorized!");
         }
 
         const loader = document.getElementById('loader');
 
+        // Kayıt olma işlemi
         document.querySelector('.signup-form').addEventListener('submit', function (event) {
             event.preventDefault();
             loader.style.display = 'flex';
@@ -123,21 +142,7 @@
                 });
         });
 
-        const loginDiv = document.querySelector('.login');
-        const signupDiv = document.querySelector('.signup');
-
-        document.querySelector('.f-switch-btn-to-login').addEventListener('click', function (event) {
-            event.preventDefault();
-            signupDiv.classList.add('hidden');
-            loginDiv.classList.remove('hidden');
-        });
-
-        document.querySelector('.f-switch-btn-to-signup').addEventListener('click', function (event) {
-            event.preventDefault();
-            loginDiv.classList.add('hidden');
-            signupDiv.classList.remove('hidden');
-        });
-
+        // Giriş yapma işlemi
         document.querySelector('.login-btn').addEventListener('click', function (event) {
             event.preventDefault();
             loader.style.display = 'flex';
@@ -165,6 +170,50 @@
                 });
         });
 
+        document.querySelector('.f-forgot-pass').addEventListener('click', function (event) {
+            event.preventDefault();
+            document.getElementById('forgot-pass-div').classList.remove('hidden');
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('signup').classList.add('hidden');
+        });
+
+        // Şifrə sıfırlama funksiyası
+        document.querySelector('.reset-pass-btn').addEventListener('click', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('forgot-email').value;
+            const loader = document.getElementById('loader');
+            loader.style.display = 'flex';
+
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert('Sıfırlama linki e-poçt ünvanınıza göndərildi.');
+                    loader.style.display = 'none';
+                })
+                .catch((error) => {
+                    document.getElementById('reset-error').innerText = "E-mail tapılmadı və ya başqa xəta baş verdi.";
+                    document.getElementById('reset-error').classList.remove('hidden');
+                    loader.style.display = 'none';
+                    console.error(error.message);
+                });
+        });
+
+        // Login/signup sayfasını değiştirme işlemi
+        const loginDiv = document.querySelector('.login');
+        const signupDiv = document.querySelector('.signup');
+
+        document.querySelector('.f-switch-btn-to-login').addEventListener('click', function (event) {
+            event.preventDefault();
+            signupDiv.classList.add('hidden');
+            loginDiv.classList.remove('hidden');
+        });
+
+        document.querySelector('.f-switch-btn-to-signup').addEventListener('click', function (event) {
+            event.preventDefault();
+            loginDiv.classList.add('hidden');
+            signupDiv.classList.remove('hidden');
+        });
+
+        // Inputların dolu olduğunda class ekleme işlemi
         const inputFields = document.querySelectorAll('.f-input');
         inputFields.forEach(inputField => {
             inputField.addEventListener('input', function () {

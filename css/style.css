@@ -156,3 +156,31 @@ body {
     margin-top: -45px;
     margin-left: 20px;
 }
+
+.f-forgot-pass {
+    margin-left: 24px;
+    color: #000;
+}
+
+.hidden {
+    display: none;
+}
+
+.f-form h1 {
+    color: #3b742f;
+}
+
+.f-form label {
+    color: #3b742f;
+}
+
+.f-pass-exit-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 4px;
+    border-radius: 50%;
+    border: 1px solid #3b742f;
+    width: 40px;
+    aspect-ratio: 1/1;
+}
