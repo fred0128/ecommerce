@@ -54,7 +54,7 @@
     </div>
 
     <div id="forgot-pass-div" class="page forgot-pass hidden f-form">
-        <button class="f-pass-exit-btn">
+        <button onclick="backToLogin()" class="f-pass-exit-btn">
             <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5"
                 fill="none" xmlns="http://www.w3.org/2000/svg" color="#3b742f">
                 <path d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5" stroke="#3b742f" stroke-width="1.5"
@@ -67,7 +67,21 @@
             <input class="f-input" type="email" id="forgot-email">
         </div>
         <button class="reset-pass-btn f-button" type="submit">Reset Password</button>
-        <div id="reset-error" class="error-message hidden"></div>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert login-success">
+            Logged-in successfully!
+        </div>
+        <div class="alert signup-success">
+            Account created!
+        </div>
+        <div class="alert password-reset-send-success">
+            Password reset link has been sent to your email address.
+        </div>
+        <div class="alert signup-error hidden">Xeta bas verdi!</div>
+        <div class="alert login-error hidden">E-mail və ya şifrə yanlışdır.</div>
+        <div id="reset-error" class="alert hidden"></div>
     </div>
 
     <script type="module">
@@ -85,12 +99,10 @@
             measurementId: "G-2Q0G4FHG5T"
         };
 
-        // Firebase'i başlat
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
         const auth = getAuth(app);
 
-        // İzin verilen domainler
         const allowedDomains = [
             "127.0.0.1",
             "https://fred0128.github.io/",
@@ -106,7 +118,6 @@
 
         const loader = document.getElementById('loader');
 
-        // Kayıt olma işlemi
         document.querySelector('.signup-form').addEventListener('submit', function (event) {
             event.preventDefault();
             loader.style.display = 'flex';
@@ -116,8 +127,7 @@
             const rePassword = document.getElementById('re-password').value;
 
             if (password !== rePassword) {
-                document.getElementById('signup-error').innerText = 'Şifrələr uyğun gəlmir!';
-                document.getElementById('signup-error').classList.remove('hidden');
+                showAlert('signup-error', 'Şifrələr uyğun gəlmir!');
                 loader.style.display = 'none';
                 return;
             }
@@ -128,21 +138,19 @@
                     set(ref(database, 'users/' + userId), {
                         email: email,
                     }).then(() => {
-                        alert('Məlumatlar uğurla göndərildi!');
+                        showAlert('signup-success', 'Məlumatlar uğurla göndərildi!');
                         loader.style.display = 'none';
                         window.location.href = "assets/pages/main.html";
                     });
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
-                    document.getElementById('signup-error').innerText = "Xəta baş verdi. Zəhmət olmasa məlumatlarınızı yoxlayın.";
-                    document.getElementById('signup-error').classList.remove('hidden');
+                    showAlert('signup-error', "Xəta baş verdi. Zəhmət olmasa məlumatlarınızı yoxlayın.");
                     console.error("Xəta baş verdi: ", errorMessage);
                     loader.style.display = 'none';
                 });
         });
 
-        // Giriş yapma işlemi
         document.querySelector('.login-btn').addEventListener('click', function (event) {
             event.preventDefault();
             loader.style.display = 'flex';
@@ -154,17 +162,13 @@
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log('Giriş uğurlu:', user);
+                    showAlert('login-success', 'Giriş uğurlu!');göstər
                     loader.style.display = 'none';
                     window.location.href = "assets/pages/main.html";
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
-
-                    // Hata mesajını error-message divinə yazdır
-                    document.getElementById('login-error').innerText = "E-mail və ya şifrə yanlışdır.";
-                    document.getElementById('login-error').classList.remove('hidden');
-
-                    // Hər hansısa spesifik bir xəta mesajını konsola yazdır
+                    showAlert('login-error', "E-mail və ya şifrə yanlışdır.");
                     console.error("Giriş xəta baş verdi: ", errorMessage);
                     loader.style.display = 'none';
                 });
@@ -177,7 +181,6 @@
             document.getElementById('signup').classList.add('hidden');
         });
 
-        // Şifrə sıfırlama funksiyası
         document.querySelector('.reset-pass-btn').addEventListener('click', function (event) {
             event.preventDefault();
             const email = document.getElementById('forgot-email').value;
@@ -186,7 +189,7 @@
 
             sendPasswordResetEmail(auth, email)
                 .then(() => {
-                    alert('Sıfırlama linki e-poçt ünvanınıza göndərildi.');
+                    showAlert('password-reset-send-success');
                     loader.style.display = 'none';
                 })
                 .catch((error) => {
@@ -197,9 +200,17 @@
                 });
         });
 
-        // Login/signup sayfasını değiştirme işlemi
+        function showAlert(alertClass) {
+            const alert = document.querySelector(`.${alertClass}`);
+            alert.style.display = 'block';
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 2000);
+        }
+
         const loginDiv = document.querySelector('.login');
         const signupDiv = document.querySelector('.signup');
+        const forgotPassDiv = document.querySelector('.forgot-pass')
 
         document.querySelector('.f-switch-btn-to-login').addEventListener('click', function (event) {
             event.preventDefault();
@@ -213,7 +224,6 @@
             signupDiv.classList.remove('hidden');
         });
 
-        // Inputların dolu olduğunda class ekleme işlemi
         const inputFields = document.querySelectorAll('.f-input');
         inputFields.forEach(inputField => {
             inputField.addEventListener('input', function () {
@@ -224,6 +234,18 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        function backToLogin() {
+            const signupDiv = document.getElementById('signup');
+            const loginDiv = document.getElementById('login');
+            const forgotPassDiv = document.getElementById('forgot-pass-div');
+
+            forgotPassDiv.classList.add('hidden');
+            signupDiv.classList.add('hidden');
+            loginDiv.classList.remove('hidden');
+        }
     </script>
 </body>
 
