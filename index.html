@@ -71,7 +71,20 @@
         const database = getDatabase(app);
         const auth = getAuth(app);
 
-        console.log('Firebase initialized successfully');
+        const allowedDomains = [
+            "127.0.0.1",
+            "",
+        ];
+
+        const currentDomain = window.location.hostname;
+
+        if (!allowedDomains.includes(currentDomain)) {
+            window.location.href = "assets/pages/unauthorized.html";
+        }
+
+        else {
+            console.log("domain autorized!")
+        }
 
         const loader = document.getElementById('loader');
 
