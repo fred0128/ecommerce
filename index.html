@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="page f-page login hidden">
+        <div class="f-form">
+            <h1>Log In</h1>
+            <div class="login-input-box input-box">
+                <label class="login-label f-label" for="login-email">E-mail</label>
+                <input class="f-input" type="email" name="login-email" id="login-email">
+            </div>
+            <div class="login-input-box input-box">
+                <label class="login-label f-label" for="login-password">Password</label>
+                <input class="f-input" type="password" name="login-password" id="login-password">
+            </div>
+            <a class="f-switch-btn-to-signup" href="#">Don't have an account? Sign Up</a>
+            <button class="login-btn f-button" type="submit">Log In</button>
+            <div id="login-error" class="error-message hidden"></div>
+        </div>
+    </div>
+
+    <div class="page f-page signup">
+        <form class="signup-form f-form" action="#">
+            <h1>Sign Up</h1>
+            <div class="login-input-box input-box">
+                <label class="login-label f-label" for="e-mail">E-mail</label>
+                <input class="f-input" type="email" name="e-mail" id="e-mail">
+            </div>
+            <div class="login-input-box input-box">
+                <label class="login-label f-label" for="password">Password</label>
+                <input class="f-input" type="password" name="password" id="password">
+            </div>
+            <div class="login-input-box input-box">
+                <label class="login-label f-label" for="re-password">Repeat Password</label>
+                <input class="f-input" type="password" name="re-password" id="re-password">
+            </div>
+            <a class="f-switch-btn-to-login" href="#">Already have an account?</a>
+            <button class="sign-up f-button" type="submit">Sign Up</button>
+            <div id="signup-error" class="error-message hidden"></div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCN3FvQgCWMyM6_AH8NGgTgJ6jDLIfQP6Q",
+            authDomain: "ecommerce-thefeerid.firebaseapp.com",
+            projectId: "ecommerce-thefeerid",
+            storageBucket: "ecommerce-thefeerid.appspot.com",
+            messagingSenderId: "340163398169",
+            appId: "1:340163398169:web:a2ba8e0e8f2557dd4f3888",
+            measurementId: "G-2Q0G4FHG5T"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(app);
+
+        console.log('Firebase initialized successfully');
+
+        const loader = document.getElementById('loader');
+
+        document.querySelector('.signup-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            loader.style.display = 'flex';
+
+            const email = document.getElementById('e-mail').value;
+            const password = document.getElementById('password').value;
+            const rePassword = document.getElementById('re-password').value;
+
+            if (password !== rePassword) {
+                document.getElementById('signup-error').innerText = 'Şifrələr uyğun gəlmir!';
+                document.getElementById('signup-error').classList.remove('hidden');
+                loader.style.display = 'none';
+                return;
+            }
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const userId = userCredential.user.uid;
+                    set(ref(database, 'users/' + userId), {
+                        email: email,
+                    }).then(() => {
+                        alert('Məlumatlar uğurla göndərildi!');
+                        loader.style.display = 'none';
+                        window.location.href = "assets/pages/main.html";
+                    });
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    document.getElementById('signup-error').innerText = "Xəta baş verdi. Zəhmət olmasa məlumatlarınızı yoxlayın.";
+                    document.getElementById('signup-error').classList.remove('hidden');
+                    console.error("Xəta baş verdi: ", errorMessage);
+                    loader.style.display = 'none';
+                });
+        });
+
+        const loginDiv = document.querySelector('.login');
+        const signupDiv = document.querySelector('.signup');
+
+        document.querySelector('.f-switch-btn-to-login').addEventListener('click', function (event) {
+            event.preventDefault();
+            signupDiv.classList.add('hidden');
+            loginDiv.classList.remove('hidden');
+        });
+
+        document.querySelector('.f-switch-btn-to-signup').addEventListener('click', function (event) {
+            event.preventDefault();
+            loginDiv.classList.add('hidden');
+            signupDiv.classList.remove('hidden');
+        });
+
+        document.querySelector('.login-btn').addEventListener('click', function (event) {
+            event.preventDefault();
+            loader.style.display = 'flex';
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log('Giriş uğurlu:', user);
+                    loader.style.display = 'none';
+                    window.location.href = "assets/pages/main.html";
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+
+                    // Hata mesajını error-message divinə yazdır
+                    document.getElementById('login-error').innerText = "E-mail və ya şifrə yanlışdır.";
+                    document.getElementById('login-error').classList.remove('hidden');
+
+                    // Hər hansısa spesifik bir xəta mesajını konsola yazdır
+                    console.error("Giriş xəta baş verdi: ", errorMessage);
+                    loader.style.display = 'none';
+                });
+        });
+
+        const inputFields = document.querySelectorAll('.f-input');
+        inputFields.forEach(inputField => {
+            inputField.addEventListener('input', function () {
+                if (inputField.value.trim() !== "") {
+                    inputField.classList.add('filled');
+                } else {
+                    inputField.classList.remove('filled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
