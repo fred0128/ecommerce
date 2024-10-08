@@ -105,16 +105,19 @@
 
         const allowedDomains = [
             "127.0.0.1",
-            "https://fred0128.github.io/ecommerce",
+            "https://fred0128.github.io/ecommerce/",
         ];
 
         const currentDomain = window.location.hostname;
-
+        /*
+        
         if (!allowedDomains.includes(currentDomain)) {
             window.location.href = "assets/pages/unauthorized.html";
         } else {
             console.log("domain authorized!");
         }
+            
+        */
 
         const loader = document.getElementById('loader');
 
@@ -162,7 +165,7 @@
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log('Giriş uğurlu:', user);
-                    showAlert('login-success', 'Giriş uğurlu!');göstər
+                    showAlert('login-success', 'Giriş uğurlu!'); göstər
                     loader.style.display = 'none';
                     window.location.href = "assets/pages/main.html";
                 })
