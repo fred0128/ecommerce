@@ -242,8 +242,11 @@ button.menu {
 .user-profile-header {
     width: 40px;
     height: 40px;
-    background-color: #ccc;
+    background-color: #f6f7f9;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-content {
@@ -286,6 +289,9 @@ button.menu {
     aspect-ratio: 1/1;
     background-color: #3b742f;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-header-r {
@@ -338,6 +344,49 @@ button.menu {
 }
 
 .menu-list-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-main {
+    width: 85%;
+}
+
+#main-search {
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px 40px;
+    border-radius: 99px;
+    border: 1px solid transparent;
+    background-color: #f6f7f9;
+    outline: none;
+}
+
+#main-search:focus {
+    border: 1px solid #bbb;
+}
+
+.search-icon {
+    position: absolute;
+    margin: 25px 10px;
+    border-radius: 50%;
+}
+
+.filter-icon {
+    padding: 10px;
+    background-color: #f6f7f9;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
