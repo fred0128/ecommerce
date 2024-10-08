@@ -264,6 +264,9 @@ button.menu {
     max-width: 400px;
     background-color: #fff;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .menu-closer {
@@ -281,7 +284,7 @@ button.menu {
 .user-profile-image {
     width: 50px;
     aspect-ratio: 1/1;
-    background-color: #aaa;
+    background-color: #3b742f;
     border-radius: 50%;
 }
 
@@ -305,4 +308,37 @@ button.menu {
 .menu-closed {
     width: 0;
     overflow: hidden;
+}
+
+.menu-item-list {
+    height: 100%;
+    padding: 10px;
+}
+
+.menu-item-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.menu-list-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item-list ul li a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.menu-list-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
