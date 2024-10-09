@@ -433,9 +433,21 @@ button.menu {
     margin-top: 20px;
 }
 
+.product-class {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+}
+
 .product-item {
-    width: 45%;
-    margin: 2.5%;
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    background-color: #ececec;
+    border-radius: 26px;
+    margin: 12px 0;
 }
 
 .product-image-box {
@@ -445,13 +457,15 @@ button.menu {
 
 .product-image-box img {
     width: 100%;
-    border-radius: 10%;
+    border-radius: 22px;
 }
 
 .product-information {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    margin-left: 12px;
+    margin-top: 12px;
 }
 
 .product-name {
@@ -467,17 +481,70 @@ button.menu {
     font-weight: 300;
 }
 
-.product-price {
-    font-size: 14px;
-    font-weight: 300;
-}
-
-.product-price span {
-    font-weight: 600;
-}
-
 .product-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.product-price-main {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.product-price-discount {
+    font-size: 18px;
+    text-decoration: line-through;
+}
+
+.saved-product-icon {
+    position: absolute;
+}
+
+.save-product {
+    position: absolute;
+    background-color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8px;
+    align-self: flex-start;
+    margin: 2%;
+}
+
+.product-class-box {
+    width: 100%;
+    padding: 6px;
+    background-color: #f0f1f2;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    text-decoration: none;
+}
+
+.product-icon-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.see-all-hot-box {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }

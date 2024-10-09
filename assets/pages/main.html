@@ -88,282 +88,136 @@
         </div>
 
         <div class="product-box">
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
+            <div class="product-class">
+                <a href="#" class="product-class-box">
+                    <div class="product-icon-box">
+                        <?xml version="1.0" encoding="UTF-8"?><svg width="24px" stroke-width="1.5" height="24px"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+                            <path
+                                d="M8 18C8 20.4148 9.79086 21 12 21C15.7587 21 17 18.5 14.5 13.5C11 18 10.5 11 11 9C9.5 12 8 14.8177 8 18Z"
+                                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M12 21C17.0495 21 20 18.0956 20 13.125C20 8.15444 12 3 12 3C12 3 4 8.15444 4 13.125C4 18.0956 6.95054 21 12 21Z"
+                                stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                        HOT
                     </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
+                    <div class="see-all-hot-box">
+                        <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+                            <path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </a>
+                <div class="product-item" id="product1">
+                    <div class="product-image-box">
+                        <img src="https://picsum.photos/200/200" alt="img">
+                    </div>
+                    <div class="product-information">
+                        <div class="product-name">
+                            Product Name
+                        </div>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="product-price-main">23$</span>
+                                <span class="product-price-discount">42$</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save-product">
+                        <div onclick="saveProduct(1)" class="save-product-unsaved" id="save-product-unsaved-1">
+                            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
                                 <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    d="M22 8.86222C22 10.4087 21.4062 11.8941 20.3458 12.9929C17.9049 15.523 15.5374 18.1613 13.0053 20.5997C12.4249 21.1505 11.5042 21.1304 10.9488 20.5547L3.65376 12.9929C1.44875 10.7072 1.44875 7.01723 3.65376 4.73157C5.88044 2.42345 9.50794 2.42345 11.7346 4.73157L11.9998 5.00642L12.2648 4.73173C13.3324 3.6245 14.7864 3 16.3053 3C17.8242 3 19.2781 3.62444 20.3458 4.73157C21.4063 5.83045 22 7.31577 22 8.86222Z"
+                                    stroke="#000000" stroke-width="1.5" stroke-linejoin="round"></path>
                             </svg>
-                            5 (253 rate)
                         </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
+                        <div onclick="unSaveProduct(1)" class="save-product-saved hidden" id="save-product-saved-1">
+                            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#ff0000" stroke-width="1.5">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.9999 3.94228C13.1757 2.85872 14.7069 2.25 16.3053 2.25C18.0313 2.25 19.679 2.95977 20.8854 4.21074C22.0832 5.45181 22.75 7.1248 22.75 8.86222C22.75 10.5997 22.0831 12.2728 20.8854 13.5137C20.089 14.3393 19.2938 15.1836 18.4945 16.0323C16.871 17.7562 15.2301 19.4985 13.5256 21.14L13.5216 21.1438C12.6426 21.9779 11.2505 21.9476 10.409 21.0754L3.11399 13.5136C0.62867 10.9374 0.62867 6.78707 3.11399 4.21085C5.54605 1.68984 9.46239 1.60032 11.9999 3.94228Z"
+                                    fill="#a10000"></path>
+                            </svg>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
+                <div class="product-item" id="product3">
+                    <div class="product-image-box">
+                        <img src="https://picsum.photos/200/200" alt="img">
                     </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
+                    <div class="product-information">
+                        <div class="product-name">
+                            Product Name
+                        </div>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="product-price-main">23$</span>
+                                <span class="product-price-discount">42$</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save-product">
+                        <div onclick="saveProduct(2)" class="save-product-unsaved" id="save-product-unsaved-2">
+                            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
                                 <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    d="M22 8.86222C22 10.4087 21.4062 11.8941 20.3458 12.9929C17.9049 15.523 15.5374 18.1613 13.0053 20.5997C12.4249 21.1505 11.5042 21.1304 10.9488 20.5547L3.65376 12.9929C1.44875 10.7072 1.44875 7.01723 3.65376 4.73157C5.88044 2.42345 9.50794 2.42345 11.7346 4.73157L11.9998 5.00642L12.2648 4.73173C13.3324 3.6245 14.7864 3 16.3053 3C17.8242 3 19.2781 3.62444 20.3458 4.73157C21.4063 5.83045 22 7.31577 22 8.86222Z"
+                                    stroke="#000000" stroke-width="1.5" stroke-linejoin="round"></path>
                             </svg>
-                            5 (253 rate)
                         </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
+                        <div onclick="unSaveProduct(2)" class="save-product-saved hidden" id="save-product-saved-2">
+                            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#ff0000" stroke-width="1.5">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.9999 3.94228C13.1757 2.85872 14.7069 2.25 16.3053 2.25C18.0313 2.25 19.679 2.95977 20.8854 4.21074C22.0832 5.45181 22.75 7.1248 22.75 8.86222C22.75 10.5997 22.0831 12.2728 20.8854 13.5137C20.089 14.3393 19.2938 15.1836 18.4945 16.0323C16.871 17.7562 15.2301 19.4985 13.5256 21.14L13.5216 21.1438C12.6426 21.9779 11.2505 21.9476 10.409 21.0754L3.11399 13.5136C0.62867 10.9374 0.62867 6.78707 3.11399 4.21085C5.54605 1.68984 9.46239 1.60032 11.9999 3.94228Z"
+                                    fill="#a10000"></path>
+                            </svg>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
+                <div class="product-item" id="product3">
+                    <div class="product-image-box">
+                        <img src="https://picsum.photos/200/200" alt="img">
                     </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
+                    <div class="product-information">
+                        <div class="product-name">
+                            Product Name
+                        </div>
+                        <div class="product-bottom">
+                            <div class="product-price">
+                                <span class="product-price-main">23$</span>
+                                <span class="product-price-discount">42$</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save-product">
+                        <div onclick="saveProduct(3)" class="save-product-unsaved" id="save-product-unsaved-3">
+                            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
                                 <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                    d="M22 8.86222C22 10.4087 21.4062 11.8941 20.3458 12.9929C17.9049 15.523 15.5374 18.1613 13.0053 20.5997C12.4249 21.1505 11.5042 21.1304 10.9488 20.5547L3.65376 12.9929C1.44875 10.7072 1.44875 7.01723 3.65376 4.73157C5.88044 2.42345 9.50794 2.42345 11.7346 4.73157L11.9998 5.00642L12.2648 4.73173C13.3324 3.6245 14.7864 3 16.3053 3C17.8242 3 19.2781 3.62444 20.3458 4.73157C21.4063 5.83045 22 7.31577 22 8.86222Z"
+                                    stroke="#000000" stroke-width="1.5" stroke-linejoin="round"></path>
                             </svg>
-                            5 (253 rate)
                         </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                        <div onclick="unSaveProduct(3)" class="save-product-saved hidden" id="save-product-saved-3">
+                            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#ff0000" stroke-width="1.5">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.9999 3.94228C13.1757 2.85872 14.7069 2.25 16.3053 2.25C18.0313 2.25 19.679 2.95977 20.8854 4.21074C22.0832 5.45181 22.75 7.1248 22.75 8.86222C22.75 10.5997 22.0831 12.2728 20.8854 13.5137C20.089 14.3393 19.2938 15.1836 18.4945 16.0323C16.871 17.7562 15.2301 19.4985 13.5256 21.14L13.5216 21.1438C12.6426 21.9779 11.2505 21.9476 10.409 21.0754L3.11399 13.5136C0.62867 10.9374 0.62867 6.78707 3.11399 4.21085C5.54605 1.68984 9.46239 1.60032 11.9999 3.94228Z"
+                                    fill="#a10000"></path>
                             </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item">
-                <div class="product-image-box">
-                    <img src="https://picsum.photos/200/200" alt="img">
-                </div>
-                <div class="product-information">
-                    <div class="product-name">
-                        Product Name
-                    </div>
-                    <div class="product-bottom">
-                        <div class="product-rating">
-                            <?xml version="1.0" encoding="UTF-8"?><svg width="12px" height="12px" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="1.5">
-                                <path
-                                    d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
-                                    fill="#fbcd1f" stroke="#fbcd1f" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            5 (253 rate)
-                        </div>
-                        <div class="product-price">
-                            <span>23$</span>/pc
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <div class="menu-content menu-closed" id="menu-content">
@@ -520,6 +374,32 @@
 
         function closeMenu() {
             document.getElementById('menu-content').classList.add('menu-closed');
+        }
+
+        function saveProduct(productId) {
+            const unsavedElement = document.getElementById(`save-product-unsaved-${productId}`);
+            const savedElement = document.getElementById(`save-product-saved-${productId}`);
+
+            if (unsavedElement && savedElement) {
+                unsavedElement.classList.add('hidden');
+                savedElement.classList.remove('hidden');
+                console.log(productId, " saved");
+            } else {
+                console.error(`Element not found for product ${productId}`);
+            }
+        }
+
+        function unSaveProduct(productId) {
+            const savedElement = document.getElementById(`save-product-saved-${productId}`);
+            const unsavedElement = document.getElementById(`save-product-unsaved-${productId}`);
+
+            if (savedElement && unsavedElement) {
+                savedElement.classList.add('hidden');
+                unsavedElement.classList.remove('hidden');
+                console.log(productId, " unsaved");
+            } else {
+                console.error(`Element not found for product ${productId}`);
+            }
         }
     </script>
 
