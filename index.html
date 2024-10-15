@@ -79,9 +79,30 @@
         <div class="alert password-reset-send-success">
             Password reset link has been sent to your email address.
         </div>
-        <div class="alert signup-error hidden">Xeta bas verdi!</div>
-        <div class="alert login-error hidden">E-mail və ya şifrə yanlışdır.</div>
+        <div class="alert signup-error hidden">Xəta baş verdi!</div>
+        <div class="alert login-error hidden">Xəta baş verdi!</div>
         <div id="reset-error" class="alert hidden"></div>
+    </div>
+
+    <div id="authorization-error" style="display: none;">
+        <?xml version="1.0" encoding="UTF-8"?><svg width="72px" height="72px" viewBox="0 0 24 24" stroke-width="1.5"
+            fill="none" xmlns="http://www.w3.org/2000/svg" color="#fff">
+            <path d="M15 21H4C2.89543 21 2 20.1046 2 19V5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V15"
+                stroke="#fff" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M2 7L22 7" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            </path>
+            <path d="M5 5.01L5.01 4.99889" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            <path d="M8 5.01L8.01 4.99889" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            <path d="M11 5.01L11.01 4.99889" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            <path
+                d="M18 22.2426L20.1213 20.1213M20.1213 20.1213L22.2426 18M20.1213 20.1213L18 18M20.1213 20.1213L22.2426 22.2426"
+                stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        İcazə xətası baş verdi! Zəhmət olmasa, administratorla əlaqə saxlayın.
+        <a class="error-contact" href="#">Contact</a>
     </div>
 
     <script type="module">
@@ -90,7 +111,7 @@
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyCN3FvQgCWMyM6_AH8NGgTgJ6jDLIfQP6Q",
+            apiKey: "AIzaSyACMunaPmYKXnphdouIc6T8fDTJHfL8Q1Q",
             authDomain: "ecommerce-thefeerid.firebaseapp.com",
             projectId: "ecommerce-thefeerid",
             storageBucket: "ecommerce-thefeerid.appspot.com",
@@ -102,23 +123,6 @@
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
         const auth = getAuth(app);
-
-        const allowedDomains = [
-            "127.0.0.1",
-            "https://fred0128.github.io/ecommerce/",
-        ];
-
-        const currentDomain = window.location.hostname;
-        /*
-        
-        if (!allowedDomains.includes(currentDomain)) {
-            window.location.href = "assets/pages/unauthorized.html";
-        } else {
-            console.log("domain authorized!");
-        }
-            
-        */
-
         const loader = document.getElementById('loader');
 
         document.querySelector('.signup-form').addEventListener('submit', function (event) {
@@ -151,6 +155,11 @@
                     showAlert('signup-error', "Xəta baş verdi. Zəhmət olmasa məlumatlarınızı yoxlayın.");
                     console.error("Xəta baş verdi: ", errorMessage);
                     loader.style.display = 'none';
+                    if (errorMessage.includes("403 (Forbidden)")) {
+                        document.getElementById('authorization-error').style.display = 'block';
+                        loader.style.display = 'none';
+                        return;
+                    }
                 });
         });
 
@@ -171,8 +180,8 @@
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
-                    showAlert('login-error', "E-mail və ya şifrə yanlışdır.");
-                    console.error("Giriş xəta baş verdi: ", errorMessage);
+                    showAlert('login-error', "Xəta baş verdi.");
+                    console.error("Xəta baş verdi: ", errorMessage);
                     loader.style.display = 'none';
                 });
         });
