@@ -155,8 +155,8 @@
                     showAlert('signup-error', "Xəta baş verdi. Zəhmət olmasa məlumatlarınızı yoxlayın.");
                     console.error("Xəta baş verdi: ", errorMessage);
                     loader.style.display = 'none';
-                    if (errorMessage.includes("403 (Forbidden)")) {
-                        document.getElementById('authorization-error').style.display = 'block';
+                    if (errorMessage.includes("Firebase: Error (auth/")) {
+                        document.getElementById('authorization-error').style.display = 'flex';
                         loader.style.display = 'none';
                         return;
                     }
