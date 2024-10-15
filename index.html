@@ -155,12 +155,12 @@
                     showAlert('signup-error', "Xəta baş verdi. Zəhmət olmasa məlumatlarınızı yoxlayın.");
                     console.error("Xəta baş verdi: ", errorMessage);
                     loader.style.display = 'none';
-                    if (errorMessage.includes("Firebase: Error (auth/")) {
-                        document.getElementById('authorization-error').style.display = 'flex';
-                        loader.style.display = 'none';
-                        return;
-                    }
                 });
+            if (errorMessage.includes("Firebase: Error (auth/")) {
+                document.getElementById('authorization-error').style.display = 'flex';
+                loader.style.display = 'none';
+                return;
+            }
         });
 
         document.querySelector('.login-btn').addEventListener('click', function (event) {
