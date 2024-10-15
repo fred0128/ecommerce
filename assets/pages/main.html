@@ -393,6 +393,13 @@
         </ul>
     </nav>
 
+    <div id="error-domain-div" class="error-domain-div" style="display: none;">
+        <p>
+            Dogru sayta daxil oldugunuzdan emin olun!
+        </p>
+        <a href="#">Magaza.com</a>
+    </div>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
@@ -450,6 +457,7 @@
                 if (response.ok) {
                     return response.json();
                 } else {
+                    document.getElementById('error-domain-div').classList.remove('hidden')
                     throw new Error("ResponseIsOk");
                 }
             })
@@ -463,6 +471,7 @@
                         if (response.ok) {
                             return response.json();
                         } else {
+                            document.getElementById('error-domain-div').classList.remove('hidden')
                             throw new Error("ResponseIsInvalid.");
                         }
                     })
@@ -470,7 +479,8 @@
                         console.log("ResponseIsOk");
                     })
                     .catch(error => {
-                        console.error("Xəta:", error.message);
+                        document.getElementById('error-domain-div').classList.remove('hidden')
+                        console.error("Eroor:", error.message);
                     });
             });
     </script>
