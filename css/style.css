@@ -26,10 +26,6 @@ body {
     background-color: var(--main-background-color);
 }
 
-.hidden {
-    display: none;
-}
-
 .signup {
     width: 100%;
     height: 100%;
@@ -163,10 +159,6 @@ body {
     color: #000;
 }
 
-.hidden {
-    display: none;
-}
-
 .f-form h1 {
     color: #3b742f;
 }
@@ -218,6 +210,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 0 20px 20px 20px;
+    overflow: hidden;
 }
 
 header {
@@ -427,9 +420,11 @@ button.menu {
 
 .product-box {
     width: 100%;
+    height: 66%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    overflow-x: scroll;
     margin-top: 20px;
 }
 
@@ -504,11 +499,11 @@ button.menu {
 }
 
 .saved-product-icon {
-    position: absolute;
+    position: fixed;
 }
 
 .save-product {
-    position: absolute;
+    position: relative;
     background-color: #fff;
     width: 36px;
     height: 36px;
@@ -628,10 +623,6 @@ a.have-account-btn-box-login {
     justify-content: center;
 }
 
-.hidden {
-    display: none;
-}
-
 .error-domain-div {
     position: absolute;
     top: 0;
@@ -659,7 +650,9 @@ a.have-account-btn-box-login {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
 }
 
 .main-nav-bottom ul {
@@ -669,7 +662,22 @@ a.have-account-btn-box-login {
     justify-content: space-between;
 }
 
+.main-nav-bottom ul li {
+    width: 100%;
+}
+
 .main-nav-bottom ul a {
+    width: 100%;
     text-decoration: none;
     color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+    padding: 6px;
+}
+
+.hidden {
+    display: none;
 }
