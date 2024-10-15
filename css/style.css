@@ -577,3 +577,8 @@ button.menu {
     padding: 10px 16px;
     border-radius: 4px;
 }
+
+.err-logo-box {
+    position: absolute;
+    top: 30px;
+}
