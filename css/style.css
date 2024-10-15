@@ -217,7 +217,7 @@ body {
 .container-home {
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
 header {
@@ -581,4 +581,53 @@ button.menu {
 .err-logo-box {
     position: absolute;
     top: 30px;
+}
+
+.have-account-box {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    width: 100%;
+}
+
+.have-account-btn-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.have-account-box a {
+    border: 1px solid #3b742f;
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a.have-account-btn-box-signup {
+    color: #3b742f;
+}
+
+a.have-account-btn-box-login {
+    background-color: #3b742f;
+    color: #fff;
+}
+
+.close-have-account {
+    background-color: #ccc;
+    width: 18px;
+    height: 18px;
+    font-size: 14px;
+    border: none;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
 }

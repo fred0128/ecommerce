@@ -12,7 +12,15 @@
 <body>
 
     <div class="container-home">
-        <header>
+        <div class="have-account-box" id="have-account-box">
+            <p>Hesabiniz var?</p>
+            <div class="have-account-btn-box">
+                <a href="#" class="have-account-btn-box-signup">Sign Up</a>
+                <a href="#" class="have-account-btn-box-login">Login</a>
+                <div class="close-have-account" onclick="closeHaveAccount()">x</div>
+            </div>
+        </div>
+        <header id="header">
             <button onclick="openMenu()" class="menu">
                 <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff">
@@ -251,7 +259,7 @@
                 <ul>
                     <div class="menu-list-top">
                         <li>
-                            <a href="#">
+                            <a href="info.html">
                                 <div class="menu-list-icon">
                                     <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px"
                                         stroke-width="1.5" viewBox="0 0 24 24" fill="none"
@@ -400,6 +408,11 @@
             } else {
                 console.error(`Element not found for product ${productId}`);
             }
+        }
+
+        function closeHaveAccount() {
+            document.getElementById('have-account-box').classList.add('hidden');
+            document.getElementById('header').style.margin = "20px 0 0 0";
         }
     </script>
 
